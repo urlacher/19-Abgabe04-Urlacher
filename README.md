@@ -1,9 +1,31 @@
 # Lab Report "Vertiefende Gesamtwiederholung Arbeitsaufträge"
 
-**Name** | **Thomas Urlacher**
-:-|:-
-**Abgabe** | **04**
-**Repository** | **https://github.com/urlacher/19-Abgabe04-Urlacher.git**
+<table>
+    <tr>
+        <td>
+        Name
+        </td>
+        <td>
+        Thomas Urlacher
+        </td>
+    </tr>
+    <tr>
+        <td>
+        Abgabe
+        </td>
+        <td>
+        04
+        </td>
+    </tr>
+    <tr>
+        <td>
+        Repository
+        </td>
+        <td>
+        <a href="https://github.com/urlacher/19-Abgabe04-Urlacher.git">https://github.com/urlacher/19-Abgabe04-Urlacher.git</a>
+        </td>
+    </tr>
+</table>
 
 
 ## Aufgabenstellung
