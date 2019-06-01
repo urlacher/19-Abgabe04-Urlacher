@@ -57,10 +57,10 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 
 ---
 
-- [ ] 4. Erstellung JUnit Tests (vollständig testen, mehrere Varianten)
-  - [ ] Sie werden die „selben“ Testfälle mehrfach erstellen müssen um „mehrere Variationen“ für einen möglichst vollständigen Test zu erreichen. Achten Sie dabei mit unterschiedlichen Daten zu testen.
-  - [ ] JavaDoc Kommentare erstellen.
-  - [ ] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
+- [x] 4. Erstellung JUnit Tests (vollständig testen, mehrere Varianten)
+  - [x] Sie werden die „selben“ Testfälle mehrfach erstellen müssen um „mehrere Variationen“ für einen möglichst vollständigen Test zu erreichen. Achten Sie dabei mit unterschiedlichen Daten zu testen.
+  - [x] JavaDoc Kommentare erstellen.
+  - [x] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
 
 ---
 
@@ -194,6 +194,21 @@ Mittels JavaDoc kann automatisiert
 ![Implementation](./media/03_02_Javadoc_queueImplementation.png)
 
 ### 4. JUnit
+
+#### 4.1 Before, BeforeClasses etc
+
+Feature | Junit 4 | Junit 5
+-|-|-
+Execute before all test methods of the class are executed. <br> Used with static method. <br> For example, This method could contain some initialization code | @BeforeClass | @BeforeAll
+Execute after all test methods in the current class. <br> Used with static method. <br> For example, This method could contain some cleanup code. | @AfterClass  | @AfterAll
+Execute before each test method. <br> Used with non-static method. <br> For example, to reinitialize some class attributes used by the methods. | @Before | @BeforeEach
+Execute after each test method. <br> Used with non-static method. <br> For example, to roll back database modifications. | @After       | @AfterEach
+
+#### 4.2 Implementierte Tests
+
+Die Queue Implementierung wurde um eine IndexOutOfBounce Exception im Constructor erweitert, um ein ungewolltes verwenden von Werten &lt;=0 für die Queue zu verhindern.
+
+![JUnit integration in JavaDoc](./media/04_02_Javadoc_StringQueueTest.png)
 
 ### 5. Pom.xml - JavaDoc
 
