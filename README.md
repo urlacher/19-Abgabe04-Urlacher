@@ -47,8 +47,8 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 
 - [x] 2. Korrigieren Sie den Code bzw. Debuggen Sie ihn um die Fehler zu finden
   - [x] Es befinden sich gesamt 3 Fehler im Source Code.
-  - [x] Bei Bedarf Optimieren Sie das Queue Beispiel.
-  - [x] Ergänzen Sie das Beispiel nach eigenen Ermessen um es testen zu können.
+  - [x] Bei Bedarf optimieren Sie das Queue Beispiel.
+  - [x] Ergänzen Sie das Beispiel nach eigenem Ermessen um es testen zu können.
 
 ---
 
@@ -109,7 +109,7 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 
 ## Vorgehen
 
-### 1. TODO Liste mittels Markdown erstellt. 
+### 1. TODO Liste mittels Markdown erstellt
 
 ### 2. BugFixing
 
@@ -123,30 +123,30 @@ Die ersten beiden Fehler betreffen den Construktor.
 2. maxSize = maxSize ist nutzlos Wert wird nicht übernommen
 3. ArrayList&lt;String> könnte durch ArrayList&lt;> ersetzt werden (Kein Bug in diesem Sinne)
 
-**Bug:**
+**Bug**  
 ![Bug Construktor Bug](./media/02_01_bug.png)
 
-**Fix**
+**Fix**  
 ![Fix Construktor Fix](./media/02_01_fix.png)
 
 #### 2.2 poll() IndexOutOfBounce Error
 
 1. Die Prüfung der ArrayListe auf die Size == 0 führt zu einer IndexOutOfBounce Exception.
 
-**Bug:**
+**Bug**  
 ![IndexOutOfBounce Bug](./media/02_02_bug.png)
 
-**Fix**
+**Fix**  
 ![IndexOutOfBounce Fix](./media/02_02_fix.png)
 
 #### 2.3 remove () unnötige Wert-Zuweisung
 
 1. Mit element = ""; wird dem Returnstring immer der Wert "" zugewiesen anstatt den ElementString zu retournieren
 
-**Bug:**
+**Bug**  
 ![IndexOutOfBounce Bug](./media/02_03_bug.png)
 
-**Fix**
+**Fix**  
 ![IndexOutOfBounce Fix](./media/02_03_fix.png)
 
 ### 3. JavaDoc
