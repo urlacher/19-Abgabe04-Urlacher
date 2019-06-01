@@ -52,8 +52,8 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 
 ---
 
-- [ ] 3. Erstellen Sie für Klasse und alle Methoden Kommentare um mittels Javadoc eine API Dokumentation zu erzeugen
-  - [ ] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
+- [x] 3. Erstellen Sie für Klasse und alle Methoden Kommentare um mittels Javadoc eine API Dokumentation zu erzeugen
+  - [x] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
 
 ---
 
@@ -121,7 +121,7 @@ Die ersten beiden Fehler betreffen den Construktor.
 
 1. Defaultwert erfordert eigenen Konstruktor
 2. maxSize = maxSize ist nutzlos Wert wird nicht übernommen
-3. ArrayList&lt;String> könnte durch ArrayList&lt;> ersetzt werden (Kein Bug in diesem Sinne)
+3. ArrayList&lt;String&gt; könnte durch ArrayList&lt;&gt; ersetzt werden (Kein Bug in diesem Sinne)
 
 **Bug**  
 ![Bug Construktor Bug](./media/02_01_bug.png)
@@ -150,6 +150,48 @@ Die ersten beiden Fehler betreffen den Construktor.
 ![IndexOutOfBounce Fix](./media/02_03_fix.png)
 
 ### 3. JavaDoc
+
+#### 3.1 JavaDoc Annotationen
+
+Folgende JavaDoc Annotationen könnten verwendet werden:
+
+Tag und Parameter  | Ausgabe  | Verwendung in  | seit
+-------------------|----------|----------------|-----
+@author name  | Beschreibt den Autor.  | Klasse, Interface  |
+@version version  | Erzeugt einen Versionseintrag. Maximal einmal pro Klasse oder Interface.  | Klasse, Interface  |
+@since jdk-version  | Seit wann die Funktionalität existiert.  | Klasse, Interface, Instanzvariable, Methode  |
+@see reference  | Erzeugt einen Link auf ein anderes Element der Dokumentation.  | Klasse, Interface, Instanzvariable, Methode  |
+@serial  | Beschreibt die serialisierten Daten eines Serializable-Objekts.  | Klasse  |
+@serialField  | Dokumentiert ein Feld eines Serializable-Objekts.  | Klasse, Methode  |
+@param name description  | Parameterbeschreibung einer Methode.  | Methode  |
+@return description  | Beschreibung des Rückgabewerts einer Methode.  | Methode  |
+@throws, @exception classname description  | Beschreibung einer Exception, die von dieser Methode geworfen werden kann.  | Methode  |
+@deprecated description  | Beschreibt eine veraltete Methode, die nicht mehr verwendet werden sollte. Sollte ab Java 5.0 immer mit der @Deprecated-Annotation verwendet werden.  | Methode  |
+{@inheritDoc}  | Kopiert die Beschreibung aus der überschriebenen Methode.  | Überschreibende Methode  | 1.4.0
+{@link reference}  | Link zu einem anderen Symbol.  | Klasse, Interface, Instanzvariable, Methode  |
+{@linkPlain reference}  | Der Link wird in Standardtext statt in Quelltextzeichensatz angezeigt.  | Klasse, Interface, Instanzvariable, Methode  | 1.4.0
+{@value}  | Gibt den Wert eines konstanten Feldes zurück.  | Statisches Feld  | 1.4.0
+{@docRoot}  | Gibt den absoluten Pfad zum Hauptverzeichnis wieder.  | Package, Klassen, Felder, Methoden  |
+{@code}  | Formatiert Text buchstabengetreu mit dem Quelltextzeichensatz (entsprechend &lt;code&gt;) und unterdrückt die Interpretierung von beinhalteten HTML oder Javadoc-Tags.  | Klasse, Interface, Instanzvariable, Methode  | 5.0
+{@literal}  | Kennzeichnet buchstabengetreuen Text und unterdrückt die Interpretierung von beinhalteten HTML oder Javadoc-Tags.  | Klasse, Interface, Instanzvariable, Methode  | 5.0
+
+#### 3.2 Allgemein
+
+Mittels JavaDoc kann automatisiert 
+
+#### 3.3 Implementierung ins Projekt
+
+##### 3.3.1 main Page
+
+![Main Page](./media/03_01_Javadoc_mainPage.png)
+
+##### 3.3.2 Interface Page
+
+![Interface](./media/03_02_Javadoc_queueInterface.png)
+
+##### 3.3.3 Implementation Page
+
+![Implementation](./media/03_02_Javadoc_queueImplementation.png)
 
 ### 4. JUnit
 
