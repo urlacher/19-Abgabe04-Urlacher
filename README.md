@@ -64,10 +64,9 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 
 ---
 
-- [ ] 5. Passen Sie Ihr pom.xml auf das Projekt an, damit Sie das Projekt erstellen aber auch Dokumentation generieren können.
-
-  - [ ] EntwicklerInnen Informationen hinzufügen.
-  - [ ] Integration Logging Bibliothek log4j mittels Maven Dependencies.
+- [x] 5. Passen Sie Ihr pom.xml auf das Projekt an, damit Sie das Projekt erstellen aber auch Dokumentation generieren können.
+  - [x] EntwicklerInnen Informationen hinzufügen.
+  - [x] Integration Logging Bibliothek log4j mittels Maven Dependencies.
 
 ---
 
@@ -210,7 +209,72 @@ Die Queue Implementierung wurde um eine IndexOutOfBounce Exception im Constructo
 
 ![JUnit integration in JavaDoc](./media/04_02_Javadoc_StringQueueTest.png)
 
-### 5. Pom.xml - JavaDoc
+### 5. pom.xml - JavaDoc
+
+#### 5.1 Anpassungen pom.xml
+
+##### 5.1.1 Enticklerinformationen
+
+Allgemeine Informationen über das pom.xml können hier abgerufen werden: [Apache Maven](https://maven.apache.org/pom.html)
+Entwicklerinformationen können wie folgt eingebunden werden.
+
+```xml
+<developers>
+    <developer>
+        <id>thomasurlacher</id>
+        <name>Thomas Urlacher</name>
+        <email>thomas.urlacher@edu.campus02.at</email>
+        <url>https://www.campus02.at</url>
+        <organization>FH Campus 02</organization>
+        <organizationUrl>https://www.camus02.at</organizationUrl>
+        <roles>
+            <role>Student</role>
+        </roles>
+        <timezone>Europe/Vienna</timezone>
+        <properties>
+            <picUrl>https://avatars0.githubusercontent.com/u/44243523</picUrl>
+        </properties>
+    </developer>
+</developers>
+
+```
+
+Weitere Informationen über [Developers](https://maven.apache.org/pom.html#Developers)
+
+#### 5.1.2 SCM Informationen für die Maven-Site
+
+Im SCM Teil der pom.xml datei kann auch eine Verknüpfung auf das Versionsmanagementsystem hergestellt werden.
+
+```xml
+<scm>
+    <connection>scm:git:https://github.com/urlacher/19-Abgabe04-Urlacher</connection>
+    <developerConnection>scm:git:https://github.com/urlacher/19-Abgabe04-Urlacher</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/urlacher/19-Abgabe04-Urlacher</url>
+</scm>
+```
+
+Weitere Informationen über [SCM](https://maven.apache.org/pom.html#SCM)
+
+#### 5.1.3 log4j Einbindung
+
+log4j kann folgendermaßen über das pom.xml eingebunden werden:
+
+```xml
+<dependencies>
+    ....
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>2.11.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.11.1</version>
+    </dependency>
+</dependencies>
+```
 
 ### 6. Log4j
 
