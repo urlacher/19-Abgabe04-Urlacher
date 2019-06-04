@@ -35,7 +35,7 @@ public class StringQueueTest {
      * New Object with maxSize = 0
      * @throws Exception
      */
-    @Test (expected = IndexOutOfBoundsException.class)
+    @Test (expected = IllegalArgumentException.class)
     public void queueSizeZero() throws Exception {
         queueSizeNegative = new StringQueue(0);
     }
@@ -45,7 +45,7 @@ public class StringQueueTest {
      * New Object with maxSize = -2
      * @throws Exception
      */
-    @Test (expected = IndexOutOfBoundsException.class)
+    @Test (expected = IllegalArgumentException.class)
     public void queueSizeNegative() throws Exception {
         queueSizeZero = new StringQueue(-2);
     }
