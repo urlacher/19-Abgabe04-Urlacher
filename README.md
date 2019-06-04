@@ -71,9 +71,9 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 ---
 
 - [ ] 6. Log4j (Version 2) integrieren und in jeder Methode ins Log schreiben
-  - [ ] Siehe aktualisiertes Stack Beispiel.
-  - [ ] Erstellen Sie einen Statischen Logger der auf die Konsole schreibt.
-  - [ ] Konfigurieren Sie Logger über ein properties File.
+  - [x] Siehe aktualisiertes Stack Beispiel.
+  - [x] Erstellen Sie einen Statischen Logger der auf die Konsole schreibt.
+  - [x] Konfigurieren Sie Logger über ein properties File.
   - [ ] Geben Sie eine Info Lognachricht bei Aufruf einer jeden Methode aus.
   - [ ] Geben Sie eine Error Lognachricht aus bevor Sie einen Fehler werfen.
   - [ ] Ergebnisse (Konsolenausgabe) als Bild in Dokumentation einfließen lassen.
@@ -277,6 +277,63 @@ log4j kann folgendermaßen über das pom.xml eingebunden werden:
 ```
 
 ### 6. Log4j
+
+#### 6.1 Allgemeine Informationen
+
+Log4j wird in der StringQueue.java Klasse über:
+
+```java
+private static final Logger logger = LogManager.getLogger(StringQueue.class);
+```
+
+Folgende **Funktionen** sind in log4j vorhanden:
+
+```java
+//Logger Built In level
+logger.trace("the built-in TRACE level");
+logger.debug("the built-in DEBUG level");
+logger.info("the built-in INFO level");
+logger.warn("the built-in WARN level");
+logger.error("the built-in ERROR level");
+logger.fatal("the built-in FATAL level");
+
+//Custom Level messages
+logger.verbose("a custom level: a VERBOSE message");
+logger.notice("a custom level: a NOTICE message");
+logger.diag("a custom level: a DIAG message");
+logger.notice("java 8 lambda expression only executed if NOTICE is enabled: {}", () -> someMethod());
+```
+
+Die **Einstelungen** werden über ein log4j2.properties file konfiguriert.
+
+```properties
+#The level of internal Log4j events that should be logged to the console.
+#Valid values for this attribute are "trace", "debug", "info", "warn", "error" and "fatal".
+status = error
+
+#dest property value can be Either "err", which will send output to stderr, or a file path or URL.
+dest = err
+
+#The name of the configuration.
+name = PropertiesConfigurationForConsole
+
+filter.threshold.type = ThresholdFilter
+filter.threshold.level = debug
+
+appender.console.type = Console
+appender.console.name = STDOUT
+appender.console.layout.type = PatternLayout
+appender.console.layout.pattern = %d{yyyy-MM-dd HH:mm:ss} [%-5p] %c{1}:%4L - %m%n
+
+#Hier kann beeinflusst werden wie detailreich das Log sein soll.
+rootLogger.level = debug
+rootLogger.appenderRefs = stdout
+rootLogger.appenderRef.stdout.ref = STDOUT
+```
+
+#### 6.2 Test Logging im Maven Lifecycle (Test)
+
+![Log4j](./media/06_02_log4j.png)
 
 ### 7. Maven Site Dokumentation
 

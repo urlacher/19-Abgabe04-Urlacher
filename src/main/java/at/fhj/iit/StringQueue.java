@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 /**
  * StingQueue implementation of the {@link Queue} Interface.
  * <p>
@@ -15,6 +18,7 @@ import java.util.NoSuchElementException;
  */
 public class StringQueue implements Queue {
 
+    private static final Logger logger = LogManager.getLogger(StringQueue.class);
     private List<String> elements = new ArrayList<>();
     private int maxSize = 5;
 
@@ -22,6 +26,7 @@ public class StringQueue implements Queue {
      * Default Constructor. Maximum of 5 Strings could be stored in this Queue
      */
     public StringQueue() {
+        logger.info("CONSTRUCTOR Default Constructor (maxSize 5)");
 
     }
 
@@ -29,9 +34,14 @@ public class StringQueue implements Queue {
      * Constructor sets maximum Size of Queue.
      *
      * @param maxSize Maximum Amount of String entries
+     * @throws IllegalArgumentException
      */
     public StringQueue(int maxSize) {
-        if(maxSize<=0) throw new IndexOutOfBoundsException("Size must be greater than 0");
+        logger.info("CONSTRUCTOR maxSize: " + maxSize);
+        if (maxSize <= 0) {
+            logger.error("CONSTRUCTOR New IndexOutOfBoundsException thrown: Size <= 0");
+            throw new IllegalArgumentException("Size must be greater than 0");
+        }
         this.maxSize = maxSize;
     }
 
@@ -43,12 +53,15 @@ public class StringQueue implements Queue {
      */
     @Override
     public boolean offer(String obj) {
-        if (elements.size() != maxSize)
+        logger.info("OFFER new item: " + obj);
+        if (elements.size() != maxSize) {
             elements.add(obj);
-        else
+            return true;
+        } else {
+            logger.error("OFFER maxSize reached!");
             return false;
+        }
 
-        return true;
     }
 
     /**
@@ -59,9 +72,12 @@ public class StringQueue implements Queue {
     @Override
     public String poll() {
         String element = peek();
+        logger.info("POLL Element: " + element);
 
         if (elements.size() > 0) {
             elements.remove(0);
+        } else {
+            logger.error("POLL No Element in Queue!");
         }
 
         return element;
@@ -76,9 +92,11 @@ public class StringQueue implements Queue {
     @Override
     public String remove() {
         String element = poll();
-        if (element == null)
+        logger.info("REMOVE Element removed: " + element);
+        if (element == null) {
+            logger.error("REMOVE NoSuchElementException thrown");
             throw new NoSuchElementException("there's no element any more");
-
+        }
         return element;
     }
 
@@ -90,10 +108,13 @@ public class StringQueue implements Queue {
     @Override
     public String peek() {
         String element;
-        if (elements.size() > 0)
+        if (elements.size() > 0) {
             element = elements.get(0);
-        else
+        } else {
             element = null;
+            logger.error("PEEK no peek element!");
+        }
+        logger.info("PEEK element: " + element);
 
         return element;
     }
@@ -107,9 +128,11 @@ public class StringQueue implements Queue {
     @Override
     public String element() {
         String element = peek();
-        if (element == null)
+        logger.info("ELEMENT element: " + element);
+        if (element == null) {
+            logger.error("ELEMENT NoSuchElementException");
             throw new NoSuchElementException("there's no element any more");
-
+        }
         return element;
     }
 
