@@ -38,7 +38,7 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 ---
 
 - [x] 1. Übertrage Angabe in Taskliste in Mardown Readme
-- [x] Einspielen Queue Vorlage aus Repository: https://github.com/michaelulm/software-configuration-management/tree/master/test-automation/Queue
+- [x] Einspielen Queue Vorlage aus Repository: <https://github.com/michaelulm/software-configuration-management/tree/master/test-automation/Queue>
 - [ ] Taskergebnisse Schritt für Schritt auf Git stellen
   - [x] Führung Taskliste
   - [ ] Veröffentlichung in Git mit aktuell durchgeführten Tätigkeiten, z.B. Testfälle geschrieben so wird auch in der Taskliste diese Aufgabe als erledigt markiert und Testfälle inkl. geänderter Taskliste ins Repository übertragen.
@@ -90,9 +90,9 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 ---
 
 - [ ] 8. Erstellung detaillierter und nachvollziehbarer Markdown Lab Report
-  - [ ] Übertragung Information aus Labreport Template.
-  - [ ] Alle Schritte dieser Übung nachvollziehbar erläutern.
-  - [ ] Übung Github Flavor: Erstellen Sie einen Codeblock im Dokument, welcher 3 Zeilen Python und 3 Zeilen Java Source Code korrekt darstellt.
+  - [x] Übertragung Information aus Labreport Template.
+  - [x] Alle Schritte dieser Übung nachvollziehbar erläutern.
+  - [x] Übung Github Flavor: Erstellen Sie einen Codeblock im Dokument, welcher 3 Zeilen Python und 3 Zeilen Java Source Code korrekt darstellt.
   - [ ] Korrekturlesen Dokumentation
   - [ ] PDF erstellen (zB Dillinger)
 
@@ -176,7 +176,7 @@ Tag und Parameter  | Ausgabe  | Verwendung in  | seit
 
 #### 3.2 Allgemein
 
-Mittels JavaDoc kann automatisiert 
+Mittels JavaDoc kann automatisiert der Source-Code anhand von den zu entwickelnden Test-Cases geprüft werden
 
 #### 3.3 Implementierung ins Projekt
 
@@ -497,7 +497,45 @@ Hier die Manuell eingebundene Site (queue.md -> queue.html)
 
 ![generierte Maven Site - Index](./media/07_05_generatedSiteQueue.png)
 
-
 ### 8. MarkDown Lab Report
 
+#### 8.1 Github Markdown Flavour
+
+Github Markdown Flavour kann über die Seite von [Github](https://help.github.com/en/articles/working-with-advanced-formatting) angesehen werden.
+
+Eine Gute übersicht über den Github Markdown Flavour findest du hier [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+##### 8.1.1 Python Flavour
+
+```python
+# Program to find the sum of all numbers stored in a list
+
+# List of numbers
+numbers = [6, 5, 3, 8, 4, 2, 5, 4, 11]
+
+# variable to store the sum
+sum = 0
+
+# iterate over the list
+for val in numbers:
+    sum = sum+val
+
+# Output: The sum is 48
+print("The sum is", sum)
+```
+
+##### 8.1.2 Java Flavour
+
+```java
+// definition eine Datenstruktur, hier ein Array mit 9 Werten
+int[] array = new int[]{4, 8, 4, 2, 2, 1, 1, 5, 9};
+
+// ForEach Schleife
+for( int k: array )
+{
+    System.out.println("k = "+k);
+}
+```
+
 ## Links/Literatur
+
