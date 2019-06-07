@@ -70,22 +70,22 @@ Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer 
 
 ---
 
-- [ ] 6. Log4j (Version 2) integrieren und in jeder Methode ins Log schreiben
+- [x] 6. Log4j (Version 2) integrieren und in jeder Methode ins Log schreiben
   - [x] Siehe aktualisiertes Stack Beispiel.
   - [x] Erstellen Sie einen Statischen Logger der auf die Konsole schreibt.
   - [x] Konfigurieren Sie Logger über ein properties File.
-  - [ ] Geben Sie eine Info Lognachricht bei Aufruf einer jeden Methode aus.
-  - [ ] Geben Sie eine Error Lognachricht aus bevor Sie einen Fehler werfen.
-  - [ ] Ergebnisse (Konsolenausgabe) als Bild in Dokumentation einfließen lassen.
+  - [x] Geben Sie eine Info Lognachricht bei Aufruf einer jeden Methode aus.
+  - [x] Geben Sie eine Error Lognachricht aus bevor Sie einen Fehler werfen.
+  - [x] Ergebnisse (Konsolenausgabe) als Bild in Dokumentation einfließen lassen.
 
 ---
 
-- [ ] 7. Maven Site Dokumentation erstellen
-  - [ ] Inklusive Javadoc Code und Javadoc Test Klassen
-  - [ ] Inklusive Menü mit Verweis auf manuell erstellte Seite
-    - [ ] Seite erläutert Funktionsweise Queue
-    - [ ] Geben Sie ein Bild der Maven Site Dokumentation in den Lab Report
-    - [ ] Der Inhalt der manuell erstellten Seite sollte ersichtlich sein
+- [x] 7. Maven Site Dokumentation erstellen
+  - [x] Inklusive Javadoc Code und Javadoc Test Klassen
+  - [x] Inklusive Menü mit Verweis auf manuell erstellte Seite
+    - [x] Seite erläutert Funktionsweise Queue
+    - [x] Geben Sie ein Bild der Maven Site Dokumentation in den Lab Report
+    - [x] Der Inhalt der manuell erstellten Seite sollte ersichtlich sein
 
 ---
 
@@ -336,6 +336,167 @@ rootLogger.appenderRef.stdout.ref = STDOUT
 ![Log4j](./media/06_02_log4j.png)
 
 ### 7. Maven Site Dokumentation
+
+#### 7.1 Allgemeine Infos
+
+Die Maven-Site kann über die pom.xml über den Block Reporting bzw. über die site.xml konfiguriert werden.
+
+#### 7.2 pom.xml - project-info-reports
+
+Es können verschiedene Seiten über das Plugin [Maven Project Info Reports](https://maven.apache.org/plugins/maven-project-info-reports-plugin/index.html) eingebunden werden:
+
+```xml
+    <reporting>
+        <plugins>
+
+            <!-- reporting project information -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>team</report>
+                            <report>dependencies</report>
+                            <report>dependency-convergence</report>
+                            <report>dependency-info</report>
+                            <report>dependency-management</report>
+                            <report>distribution-management</report>
+                            <report>plugin-management</report>
+                            <report>plugins</report>
+                            <report>licenses</report>
+                            <report>scm</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+        </plugins>
+    </reporting>
+´´´
+
+#### 7.3 pom.xml - Maven Project Reports
+
+Zusätzlich können noch weitere Reports eingebunden werden [Maven Project Reports](https://maven.apache.org/plugins/maven-project-info-reports-plugin/project-reports.html)
+
+Es wurden folgende Reports eingebunden:
+
+```xml
+    <reporting>
+        <plugins>
+
+            <!-- maven site for documentation -->
+            <!-- manual upgraded maven site plugin, because 3.3 had an error -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+
+            <!-- java doc support for maven site -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <reportSets>
+
+                    <!-- reports our javadocs in our src code and test code -->
+                    <reportSet>
+                        <reports>
+                            <report>javadoc</report>
+                            <report>test-javadoc</report>
+                        </reports>
+                    </reportSet>
+
+                    <!-- aggregate reportSet, to define in poms having modules -->
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited><!-- don't run aggregate in child modules -->
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+                <version>3.1.0</version>
+                <configuration>
+                    <tags>
+                        <tag>
+                            <!--@result is replaced true "Test assertion:"-->
+                            <name>result</name>
+                            <placement>a</placement>
+                            <head>Test assertion:</head>
+                        </tag>
+                    </tags>
+                </configuration>
+
+            </plugin>
+
+            <!-- integrate test results -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+
+            <!-- Cross References -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+            <!-- integrate test Code Coverage -->
+            <plugin>
+                <artifactId>maven-clover-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+
+
+        </plugins>
+    </reporting>
+
+```
+
+#### 7.4 site.xml - Zusätzliche Einstellungen
+
+Es können über die site.xml weitere Einstellungen für das Aussehen, der Seite und zusätzliche Seiten etc eingebunden bzw. gruppiert werden.
+
+Nähere Informationen über [Maven Site Descriptor](https://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html)
+
+Die Seiten die eingebunden werden müssen folgende Struktur haben:
+
+![Maven Site Struktur](./media/07_04_mavenSiteStructure.png)
+
+Folgende Einstellungen wurden gemacht:
+
+```xml
+<project name="Queue">
+
+    <publishDate position="right"/>
+    <version position="left"/>
+    <body>
+        <menu name="Overview">
+            <item name="Queue" href="queue.html" />
+        </menu>
+        <menu ref="reports" />
+        <menu ref="parent" />
+        <menu ref="modules" />
+    </body>
+</project>
+
+```
+
+#### 7.5 Maven-Site Einbindung
+
+Hier das Ergebnis nach Maven Site (Die About Site ist die index.md):
+
+![generierte Maven Site - Index](./media/07_05_generatedSite.png)
+
+Hier die Manuell eingebundene Site (queue.md -> queue.html)
+
+![generierte Maven Site - Index](./media/07_05_generatedSiteQueue.png)
+
 
 ### 8. MarkDown Lab Report
 

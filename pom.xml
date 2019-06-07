@@ -8,24 +8,24 @@
     <artifactId>Queue</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-	<developers>
-		<developer>
-		  <id>thomasurlacher</id>
-		  <name>Thomas Urlacher</name>
-		  <email>thomas.urlacher@edu.campus02.at</email>
-		  <url>https://www.campus02.at</url>
-		  <organization>FH Campus 02</organization>
-		  <organizationUrl>https://www.camus02.at</organizationUrl>
-		  <roles>
-			<role>Student</role>
-		  </roles>
-		  <timezone>Europe/Vienna</timezone>
-		  <properties>
-			<picUrl>https://avatars0.githubusercontent.com/u/44243523</picUrl>
-		  </properties>
-		</developer>     
-	</developers>
-	
+    <developers>
+        <developer>
+            <id>thomasurlacher</id>
+            <name>Thomas Urlacher</name>
+            <email>thomas.urlacher@edu.campus02.at</email>
+            <url>https://www.campus02.at</url>
+            <organization>FH Campus 02</organization>
+            <organizationUrl>https://www.camus02.at</organizationUrl>
+            <roles>
+                <role>Student</role>
+            </roles>
+            <timezone>Europe/Vienna</timezone>
+            <properties>
+                <picUrl>https://avatars0.githubusercontent.com/u/44243523</picUrl>
+            </properties>
+        </developer>
+    </developers>
+
     <build>
         <plugins>
             <plugin>
@@ -83,6 +83,24 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.0.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>team</report>
+                            <report>dependencies</report>
+                            <report>dependency-convergence</report>
+                            <report>dependency-info</report>
+                            <report>dependency-management</report>
+                            <report>distribution-management</report>
+                            <report>plugin-management</report>
+                            <report>plugins</report>
+                            <report>licenses</report>
+                            <report>scm</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
 
             <!-- java doc support for maven site -->
