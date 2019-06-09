@@ -27,88 +27,134 @@
     </tr>
 </table>
 
+---
+
+# Inhalt
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [Aufgabenstellung](#aufgabenstellung)
+* [Vorgehen](#vorgehen)
+	* [1. TODO Liste mittels Markdown erstellen](#1-todo-liste-mittels-markdown-erstellen)
+	* [2. BugFixing](#2-bugfixing)
+		* [2.1 StringQueue Construktor Fehler](#21-stringqueue-construktor-fehler)
+		* [2.2 poll() - IndexOutOfBounce Error](#22-poll-indexoutofbounce-error)
+		* [2.3 remove() - unnötige Wert-Zuweisung](#23-remove-unnötige-wert-zuweisung)
+	* [3. JavaDoc](#3-javadoc)
+		* [3.1 JavaDoc Annotationen](#31-javadoc-annotationen)
+		* [3.2 Allgemein](#32-allgemein)
+		* [3.3 Implementierung ins Projekt](#33-implementierung-ins-projekt)
+			* [3.3.1 main Page](#331-main-page)
+			* [3.3.2 Interface Page](#332-interface-page)
+			* [3.3.3 Implementation Page](#333-implementation-page)
+	* [4. JUnit](#4-junit)
+		* [4.1 Before, BeforeClasses etc](#41-before-beforeclasses-etc)
+		* [4.2 Implementierte Tests](#42-implementierte-tests)
+	* [5. pom.xml - JavaDoc](#5-pomxml-javadoc)
+		* [5.1 Anpassungen pom.xml](#51-anpassungen-pomxml)
+			* [5.1.1 Enticklerinformationen](#511-enticklerinformationen)
+		* [5.1.2 SCM Informationen für die Maven-Site](#512-scm-informationen-für-die-maven-site)
+		* [5.1.3 log4j Einbindung](#513-log4j-einbindung)
+	* [6. Log4j](#6-log4j)
+		* [6.1 Allgemeine Informationen](#61-allgemeine-informationen)
+		* [6.2 Test Logging im Maven Lifecycle (Test)](#62-test-logging-im-maven-lifecycle-test)
+	* [7. Maven Site Dokumentation](#7-maven-site-dokumentation)
+		* [7.1 Allgemeine Infos](#71-allgemeine-infos)
+		* [7.2 pom.xml - project-info-reports](#72-pomxml-project-info-reports)
+		* [7.3 pom.xml - Maven Project Reports](#73-pomxml-maven-project-reports)
+		* [7.4 site.xml - Zusätzliche Einstellungen](#74-sitexml-zusätzliche-einstellungen)
+		* [7.5 Maven-Site Einbindung](#75-maven-site-einbindung)
+	* [8. MarkDown Lab Report](#8-markdown-lab-report)
+		* [8.1 Github Markdown Flavour](#81-github-markdown-flavour)
+			* [8.1.1 Python Flavour](#811-python-flavour)
+			* [8.1.2 Java Flavour](#812-java-flavour)
+
+<!-- /code_chunk_output -->
+
+---
+
 ## Aufgabenstellung
 
 In dieser abschließenden Übung müssen Sie alle gelernten Aspekte des Konfigurationsmanagements im Rahmen des Queue Beispiels (Test Automation GitHub) wiederholen bzw. vertiefen.
 Die Dokumentation müssen Sie komplett in Markdown erstellen und einen PDF Export davon abgeben. Während der Umsetzung müssen Teilergebnisse auf Ihr Repository online gestellt werden und eine eigene Taskliste geführt werden, damit für alle der aktuelle Status erkennbar ist.
 Die Taskliste ist eine Github Flavor Erweiterung von Markdown, die Sie in Ihrer readme.md erstellen sollen. (Der Rest der Angabe ist die Basis Ihrer Arbeitsaufträge und zugleich Ausgangstaskliste– die dann entsprechen abhaken bzw. durch neue Punkte oder Subpunkte erweitern.)
 
-### TO-DO List (Taskliste)
-
----
-
-- [x] 1. Übertrage Angabe in Taskliste in Mardown Readme
-- [x] Einspielen Queue Vorlage aus Repository: <https://github.com/michaelulm/software-configuration-management/tree/master/test-automation/Queue>
-- [ ] Taskergebnisse Schritt für Schritt auf Git stellen
-  - [x] Führung Taskliste
-  - [ ] Veröffentlichung in Git mit aktuell durchgeführten Tätigkeiten, z.B. Testfälle geschrieben so wird auch in der Taskliste diese Aufgabe als erledigt markiert und Testfälle inkl. geänderter Taskliste ins Repository übertragen.
-
----
-
-- [x] 2. Korrigieren Sie den Code bzw. Debuggen Sie ihn um die Fehler zu finden
-  - [x] Es befinden sich gesamt 3 Fehler im Source Code.
-  - [x] Bei Bedarf optimieren Sie das Queue Beispiel.
-  - [x] Ergänzen Sie das Beispiel nach eigenem Ermessen um es testen zu können.
-
----
-
-- [x] 3. Erstellen Sie für Klasse und alle Methoden Kommentare um mittels Javadoc eine API Dokumentation zu erzeugen
-  - [x] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
-
----
-
-- [x] 4. Erstellung JUnit Tests (vollständig testen, mehrere Varianten)
-  - [x] Sie werden die „selben“ Testfälle mehrfach erstellen müssen um „mehrere Variationen“ für einen möglichst vollständigen Test zu erreichen. Achten Sie dabei mit unterschiedlichen Daten zu testen.
-  - [x] JavaDoc Kommentare erstellen.
-  - [x] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
-
----
-
-- [x] 5. Passen Sie Ihr pom.xml auf das Projekt an, damit Sie das Projekt erstellen aber auch Dokumentation generieren können.
-  - [x] EntwicklerInnen Informationen hinzufügen.
-  - [x] Integration Logging Bibliothek log4j mittels Maven Dependencies.
-
----
-
-- [x] 6. Log4j (Version 2) integrieren und in jeder Methode ins Log schreiben
-  - [x] Siehe aktualisiertes Stack Beispiel.
-  - [x] Erstellen Sie einen Statischen Logger der auf die Konsole schreibt.
-  - [x] Konfigurieren Sie Logger über ein properties File.
-  - [x] Geben Sie eine Info Lognachricht bei Aufruf einer jeden Methode aus.
-  - [x] Geben Sie eine Error Lognachricht aus bevor Sie einen Fehler werfen.
-  - [x] Ergebnisse (Konsolenausgabe) als Bild in Dokumentation einfließen lassen.
-
----
-
-- [x] 7. Maven Site Dokumentation erstellen
-  - [x] Inklusive Javadoc Code und Javadoc Test Klassen
-  - [x] Inklusive Menü mit Verweis auf manuell erstellte Seite
-    - [x] Seite erläutert Funktionsweise Queue
-    - [x] Geben Sie ein Bild der Maven Site Dokumentation in den Lab Report
-    - [x] Der Inhalt der manuell erstellten Seite sollte ersichtlich sein
-
----
-
-- [ ] 8. Erstellung detaillierter und nachvollziehbarer Markdown Lab Report
-  - [x] Übertragung Information aus Labreport Template.
-  - [x] Alle Schritte dieser Übung nachvollziehbar erläutern.
-  - [x] Übung Github Flavor: Erstellen Sie einen Codeblock im Dokument, welcher 3 Zeilen Python und 3 Zeilen Java Source Code korrekt darstellt.
-  - [ ] Korrekturlesen Dokumentation
-  - [ ] PDF erstellen (zB Dillinger)
-
----
-
-- [ ] 9. Überprüfung Vollständigkeit der Abgabe
-
----
-
-- [ ] 10. Abgabe PDF Version der Abgabe
-
 ---
 
 ## Vorgehen
 
-### 1. TODO Liste mittels Markdown erstellt
+### 1. TODO Liste mittels Markdown erstellen
+
+* [x] 1. Übertrage Angabe in Taskliste in Mardown Readme
+* [x] Einspielen Queue Vorlage aus Repository: <https://github.com/michaelulm/software-configuration-management/tree/master/test-automation/Queue>
+* [x] Taskergebnisse Schritt für Schritt auf Git stellen
+  * [x] Führung Taskliste
+  * [x] Veröffentlichung in Git mit aktuell durchgeführten Tätigkeiten, z.B. Testfälle geschrieben so wird auch in der Taskliste diese Aufgabe als erledigt markiert und Testfälle inkl. geänderter Taskliste ins Repository übertragen.
+
+---
+
+* [x] 2. Korrigieren Sie den Code bzw. Debuggen Sie ihn um die Fehler zu finden
+  * [x] Es befinden sich gesamt 3 Fehler im Source Code.
+  * [x] Bei Bedarf optimieren Sie das Queue Beispiel.
+  * [x] Ergänzen Sie das Beispiel nach eigenem Ermessen um es testen zu können.
+
+---
+
+* [x] 3. Erstellen Sie für Klasse und alle Methoden Kommentare um mittels Javadoc eine API Dokumentation zu erzeugen
+  * [x] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
+
+---
+
+* [x] 4. Erstellung JUnit Tests (vollständig testen, mehrere Varianten)
+  * [x] Sie werden die „selben“ Testfälle mehrfach erstellen müssen um „mehrere Variationen“ für einen möglichst vollständigen Test zu erreichen. Achten Sie dabei mit unterschiedlichen Daten zu testen.
+  * [x] JavaDoc Kommentare erstellen.
+  * [x] Integrieren Sie ein Bild (der generierten Dokumentation) in Ihren Report.
+
+---
+
+* [x] 5. Passen Sie Ihr pom.xml auf das Projekt an, damit Sie das Projekt erstellen aber auch Dokumentation generieren können.
+  * [x] EntwicklerInnen Informationen hinzufügen.
+  * [x] Integration Logging Bibliothek log4j mittels Maven Dependencies.
+
+---
+
+* [x] 6. Log4j (Version 2) integrieren und in jeder Methode ins Log schreiben
+  * [x] Siehe aktualisiertes Stack Beispiel.
+  * [x] Erstellen Sie einen Statischen Logger der auf die Konsole schreibt.
+  * [x] Konfigurieren Sie Logger über ein properties File.
+  * [x] Geben Sie eine Info Lognachricht bei Aufruf einer jeden Methode aus.
+  * [x] Geben Sie eine Error Lognachricht aus bevor Sie einen Fehler werfen.
+  * [x] Ergebnisse (Konsolenausgabe) als Bild in Dokumentation einfließen lassen.
+
+---
+
+* [x] 7. Maven Site Dokumentation erstellen
+  * [x] Inklusive Javadoc Code und Javadoc Test Klassen
+  * [x] Inklusive Menü mit Verweis auf manuell erstellte Seite
+    * [x] Seite erläutert Funktionsweise Queue
+    * [x] Geben Sie ein Bild der Maven Site Dokumentation in den Lab Report
+    * [x] Der Inhalt der manuell erstellten Seite sollte ersichtlich sein
+
+---
+
+* [x] 8. Erstellung detaillierter und nachvollziehbarer Markdown Lab Report
+  * [x] Übertragung Information aus Labreport Template.
+  * [x] Alle Schritte dieser Übung nachvollziehbar erläutern.
+  * [x] Übung Github Flavor: Erstellen Sie einen Codeblock im Dokument, welcher 3 Zeilen Python und 3 Zeilen Java Source Code korrekt darstellt.
+  * [x] Korrekturlesen Dokumentation
+  * [x] PDF erstellen (zB Dillinger)
+
+---
+
+* [x] 9. Überprüfung Vollständigkeit der Abgabe
+
+---
+
+* [x] 10. Abgabe PDF Version der Abgabe
+
+---
 
 ### 2. BugFixing
 
@@ -128,7 +174,7 @@ Die ersten beiden Fehler betreffen den Construktor.
 **Fix**  
 ![Fix Construktor Fix](./media/02_01_fix.png)
 
-#### 2.2 poll() IndexOutOfBounce Error
+#### 2.2 poll() - IndexOutOfBounce Error
 
 1. Die Prüfung der ArrayListe auf die Size == 0 führt zu einer IndexOutOfBounce Exception.
 
@@ -138,7 +184,7 @@ Die ersten beiden Fehler betreffen den Construktor.
 **Fix**  
 ![IndexOutOfBounce Fix](./media/02_02_fix.png)
 
-#### 2.3 remove () unnötige Wert-Zuweisung
+#### 2.3 remove() - unnötige Wert-Zuweisung
 
 1. Mit element = ""; wird dem Returnstring immer der Wert "" zugewiesen anstatt den ElementString zu retournieren
 
@@ -147,6 +193,8 @@ Die ersten beiden Fehler betreffen den Construktor.
 
 **Fix**  
 ![IndexOutOfBounce Fix](./media/02_03_fix.png)
+
+---
 
 ### 3. JavaDoc
 
@@ -192,6 +240,8 @@ Mittels JavaDoc kann automatisiert der Source-Code anhand von den zu entwickelnd
 
 ![Implementation](./media/03_02_Javadoc_queueImplementation.png)
 
+---
+
 ### 4. JUnit
 
 #### 4.1 Before, BeforeClasses etc
@@ -209,6 +259,8 @@ Die Queue Implementierung wurde um eine IndexOutOfBounce Exception im Constructo
 
 ![JUnit integration in JavaDoc](./media/04_02_Javadoc_StringQueueTest.png)
 
+---
+
 ### 5. pom.xml - JavaDoc
 
 #### 5.1 Anpassungen pom.xml
@@ -218,7 +270,7 @@ Die Queue Implementierung wurde um eine IndexOutOfBounce Exception im Constructo
 Allgemeine Informationen über das pom.xml können hier abgerufen werden: [Apache Maven](https://maven.apache.org/pom.html)
 Entwicklerinformationen können wie folgt eingebunden werden.
 
-```xml
+```xml {.line-numbers}
 <developers>
     <developer>
         <id>thomasurlacher</id>
@@ -245,7 +297,7 @@ Weitere Informationen über [Developers](https://maven.apache.org/pom.html#Devel
 
 Im SCM Teil der pom.xml datei kann auch eine Verknüpfung auf das Versionsmanagementsystem hergestellt werden.
 
-```xml
+```xml {.line-numbers}
 <scm>
     <connection>scm:git:https://github.com/urlacher/19-Abgabe04-Urlacher</connection>
     <developerConnection>scm:git:https://github.com/urlacher/19-Abgabe04-Urlacher</developerConnection>
@@ -260,7 +312,7 @@ Weitere Informationen über [SCM](https://maven.apache.org/pom.html#SCM)
 
 log4j kann folgendermaßen über das pom.xml eingebunden werden:
 
-```xml
+```xml {.line-numbers}
 <dependencies>
     ....
     <dependency>
@@ -276,19 +328,21 @@ log4j kann folgendermaßen über das pom.xml eingebunden werden:
 </dependencies>
 ```
 
+---
+
 ### 6. Log4j
 
 #### 6.1 Allgemeine Informationen
 
 Log4j wird in der StringQueue.java Klasse über:
 
-```java
+```java {.line-numbers}
 private static final Logger logger = LogManager.getLogger(StringQueue.class);
 ```
 
 Folgende **Funktionen** sind in log4j vorhanden:
 
-```java
+```java {.line-numbers}
 //Logger Built In level
 logger.trace("the built-in TRACE level");
 logger.debug("the built-in DEBUG level");
@@ -306,7 +360,7 @@ logger.notice("java 8 lambda expression only executed if NOTICE is enabled: {}",
 
 Die **Einstelungen** werden über ein log4j2.properties file konfiguriert.
 
-```properties
+```properties {.line-numbers}
 #The level of internal Log4j events that should be logged to the console.
 #Valid values for this attribute are "trace", "debug", "info", "warn", "error" and "fatal".
 status = error
@@ -335,6 +389,8 @@ rootLogger.appenderRef.stdout.ref = STDOUT
 
 ![Log4j](./media/06_02_log4j.png)
 
+---
+
 ### 7. Maven Site Dokumentation
 
 #### 7.1 Allgemeine Infos
@@ -345,7 +401,7 @@ Die Maven-Site kann über die pom.xml über den Block Reporting bzw. über die s
 
 Es können verschiedene Seiten über das Plugin [Maven Project Info Reports](https://maven.apache.org/plugins/maven-project-info-reports-plugin/index.html) eingebunden werden:
 
-```xml
+```xml {.line-numbers}
     <reporting>
         <plugins>
 
@@ -376,7 +432,7 @@ Es können verschiedene Seiten über das Plugin [Maven Project Info Reports](htt
 
         </plugins>
     </reporting>
-´´´
+```
 
 #### 7.3 pom.xml - Maven Project Reports
 
@@ -384,7 +440,7 @@ Zusätzlich können noch weitere Reports eingebunden werden [Maven Project Repor
 
 Es wurden folgende Reports eingebunden:
 
-```xml
+```xml {.line-numbers}
     <reporting>
         <plugins>
 
@@ -470,7 +526,7 @@ Die Seiten die eingebunden werden müssen folgende Struktur haben:
 
 Folgende Einstellungen wurden gemacht:
 
-```xml
+```xml {.line-numbers}
 <project name="Queue">
 
     <publishDate position="right"/>
@@ -497,6 +553,8 @@ Hier die Manuell eingebundene Site (queue.md -> queue.html)
 
 ![generierte Maven Site - Index](./media/07_05_generatedSiteQueue.png)
 
+---
+
 ### 8. MarkDown Lab Report
 
 #### 8.1 Github Markdown Flavour
@@ -505,37 +563,20 @@ Github Markdown Flavour kann über die Seite von [Github](https://help.github.co
 
 Eine Gute übersicht über den Github Markdown Flavour findest du hier [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
+==TIPP==: [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/markdown-basics?id=markdown-basics)
+
 ##### 8.1.1 Python Flavour
 
-```python
-# Program to find the sum of all numbers stored in a list
-
-# List of numbers
+```python {.line-numbers}
 numbers = [6, 5, 3, 8, 4, 2, 5, 4, 11]
-
-# variable to store the sum
-sum = 0
-
-# iterate over the list
 for val in numbers:
     sum = sum+val
-
-# Output: The sum is 48
-print("The sum is", sum)
 ```
 
 ##### 8.1.2 Java Flavour
 
-```java
-// definition eine Datenstruktur, hier ein Array mit 9 Werten
+```java {.line-numbers}
 int[] array = new int[]{4, 8, 4, 2, 2, 1, 1, 5, 9};
-
-// ForEach Schleife
 for( int k: array )
-{
-    System.out.println("k = "+k);
-}
+    { System.out.println("k = "+k); }
 ```
-
-## Links/Literatur
-

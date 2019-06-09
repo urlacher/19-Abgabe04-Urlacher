@@ -34,7 +34,7 @@ public class StringQueue implements Queue {
      * Constructor sets maximum Size of Queue.
      *
      * @param maxSize Maximum Amount of String entries
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException Size must be greater than 0
      */
     public StringQueue(int maxSize) {
         logger.info("CONSTRUCTOR maxSize: " + maxSize);
